@@ -1,0 +1,300 @@
+/* select all elements and include padding and borders */
+* {
+  box-sizing: border-box;
+}
+
+/* setting the page background, font, and text color */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #fce4ec;
+  font-family: Arial, sans-serif;
+  color: #593747;
+}
+
+/* force form controls to use the same font as the page */
+button,
+input {
+  font: inherit;
+}
+
+/* hidden: guarantee to keep the cancel editing button out of the layout as long as the javascript has not remove the hidden attribute*/
+[hidden] {
+  display: none !important;
+}
+
+/* style the main application */
+.todo-app {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid #f4c7d8;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(120, 50, 80, 0.12);
+}
+
+/* center the application heading */
+.app-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* style the main title */
+h1 {
+  margin: 0;
+  color: #9d3763;
+  font-size: 32px;
+}
+
+/* put the label above the task input */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* place the input and the add button on the same row */
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* let the input fill the available space */
+#task-input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #e8b4c8;
+  border-radius: 12px;
+  background-color: #fff9fb;
+  color: #593747;
+}
+
+/* style the input placeholder */
+#task-input::placeholder {
+  color: #8b6878;
+}
+
+/* set the default appearance of all buttons */
+button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* style the add and save button */
+#submit-button {
+  flex-shrink: 0;
+  background-color: #f6b5ce;
+  color: #64253f;
+  font-weight: bold;
+}
+
+/* change the button color when the mouse is over it */
+#submit-button:hover {
+  background-color: #ee9fbd;
+}
+
+/* style the button used to cancel task editing */
+#cancel-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #fce4ec;
+  color: #793650;
+  font-size: 13px;
+}
+
+/* highlight the cancel button on hover */
+#cancel-button:hover {
+  background-color: #f8ccdd;
+}
+
+/* reserve space for input validation messages */
+#message {
+  min-height: 18px;
+  margin: 10px 0 0;
+  color: #a12653;
+  font-size: 13px;
+}
+
+/* style messages related to saving tasks */
+#storage-message {
+  color: #a12653;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* hide the storage message when it has no content */
+#storage-message:empty {
+  display: none;
+}
+
+/* align the task section heading and the counter */
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+/* style the task section title */
+h2 {
+  margin: 0;
+  font-size: 19px;
+}
+
+/* display the completion counter inside a pink badge */
+#counter {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background-color: #fce4ec;
+  color: #793650;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* remove the default bullets and spacing from the task list */
+#task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* arrange each task and its action buttons in one row */
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #f1ccda;
+  border-radius: 14px;
+  background-color: #fff8fb;
+}
+
+/* allow long task names to wrap */
+.task-title {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* give task action buttons a size that doesn't change */
+.task button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+/* style the button used to mark a task as a complete one */
+.toggle {
+  border: 2px solid #d68aa8;
+  background-color: #ffffff;
+  color: #793650;
+}
+
+/* style the edit button */
+.edit {
+  background-color: #fce4ec;
+  color: #8b3a5b;
+}
+
+/* style the delete button */
+.delete {
+  background-color: #f8ccdd;
+  color: #8b294d;
+}
+
+/* highlight task action buttons on hover */
+.task button:hover {
+  background-color: #f2adc8;
+}
+
+/* use a different background for completed tasks */
+.task.done {
+  background-color: #f9e6ee;
+}
+
+/* cross out the text of completed tasks */
+.task.done .task-title {
+  text-decoration: line-through;
+  color: #876674;
+}
+
+/* fill the toggle button when the task is done */
+.task.done .toggle {
+  background-color: #edacc7;
+  border-color: #c77597;
+  color: #64253f;
+}
+
+/* highlight the task currently being edited */
+.task.editing {
+  outline: 2px solid #c77597;
+  outline-offset: 2px;
+}
+
+/* center the message displayed when there are no tasks */
+#empty-state {
+  margin: 0;
+  padding: 32px 12px;
+  text-align: center;
+  color: #876674;
+  font-size: 14px;
+}
+
+/* show a clear focus indicator during keyboard navigation */
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #ad5278;
+  outline-offset: 3px;
+}
+
+/* highlight the input when the value is not valid */
+#task-input[aria-invalid="true"] {
+  border-color: #a12653;
+}
+
+/* Adjust the layout for small screens like phones */
+@media (max-width: 480px) {
+  body {
+    padding: 24px 12px;
+  }
+
+  .todo-app {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  #submit-button {
+    width: 100%;
+  }
+
+  .task {
+    gap: 8px;
+    padding: 10px;
+  }
+}

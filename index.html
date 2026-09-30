@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="todo-app">
+    <header class="app-header">
+      <h1>My To-Do List</h1>
+    </header>
+
+    <form id="task-form" novalidate>
+      <label for="task-input" id="input-label">
+        New task
+      </label>
+
+      <div class="input-row">
+
+        <input
+          type="text"
+          id="task-input"
+          placeholder="Enter a task..."
+          autocomplete="off" 
+          aria-describedby="message"
+        > <!-- autocomplete is used to not propose an old task that already exists -->
+
+        <button type="submit" id="submit-button">
+          + Add task
+        </button>
+
+      </div>
+
+      <!-- only when editing a task this button appears-->
+      <button type="button" id="cancel-button" hidden>
+        Cancel editing
+      </button>
+
+    </form>
+
+    <!-- validation messages -->
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <!-- error messages when necessary -->
+    <p id="storage-message" role="status"></p>
+
+    
+    <div class="list-heading">
+      <h2>My tasks</h2>
+      <span id="counter">0 of 0 done</span> <!-- counter to count the tasks that are done-->
+    </div>
+
+    <ul id="task-list" aria-label="Tasks"></ul>
+
+    <!-- message appears when the task list is empty -->
+    <p id="empty-state">No tasks yet.</p>
+
+  </main>
+
+  <!-- link html file to the javascript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
